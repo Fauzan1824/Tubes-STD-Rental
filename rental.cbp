@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Tubes STD" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/rental" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/rental" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="BST/bst.cpp" />
+		<Unit filename="BST/bst.h" />
+		<Unit filename="Bonus/bonus.cpp" />
+		<Unit filename="Bonus/bonus.h" />
+		<Unit filename="Khusus/khusus.cpp" />
+		<Unit filename="Khusus/khusus.h" />
+		<Unit filename="MLL-01/header/kendaraan.h" />
+		<Unit filename="MLL-01/header/penyewa.h" />
+		<Unit filename="MLL-01/header/transaksi.h" />
+		<Unit filename="MLL-01/implementation/kendaraan/kendaraan_1.cpp" />
+		<Unit filename="MLL-01/implementation/kendaraan/kendaraan_anggota1.cpp" />
+		<Unit filename="MLL-01/implementation/penyewa/penyewa_1.cpp" />
+		<Unit filename="MLL-01/implementation/penyewa/penyewa_anggota1.cpp" />
+		<Unit filename="MLL-01/implementation/transaksi/transaksi_1.cpp" />
+		<Unit filename="MLL-01/implementation/transaksi/transaksi_anggota1.cpp" />
+		<Unit filename="dummy.cpp" />
+		<Unit filename="dummy.h" />
+		<Unit filename="interface.cpp" />
+		<Unit filename="interface.h" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
