@@ -6,11 +6,11 @@
 using namespace std;
 
 struct infotypeBST {
+    string tanggal_mulai;
     int nomor_booking;
     string nama_penyewa;
     string id_penyedia;
     string id_mobil;
-    string tanggal_mulai;
     string tanggal_selesai;
     int total_biaya;
     string status_pembayaran;
@@ -32,8 +32,8 @@ struct BST {
 void createBST(BST &T);
 adrBST allocateBST(infotypeBST x);
 void insertBST(adrBST &root, adrBST P);
-void deleteBST(adrBST &root, int nomor_booking);
-adrBST searchBST(adrBST root, int nomor_booking);
+void deleteBST(adrBST &root, string tanggal_mulai);
+adrBST searchBST(adrBST root, string tanggal_mulai);
 void inOrder(adrBST root);
 void preOrder(adrBST root);
 void postOrder(adrBST root);
