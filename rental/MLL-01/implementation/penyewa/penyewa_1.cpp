@@ -111,18 +111,22 @@ adrPenyedia findPenyedia(ListPenyedia L, string id_penyedia) {
 
 void printAllPenyedia(ListPenyedia L) {
     // I.S. : list L mungkin kosong
-    // F.S. : seluruh data penyedia di L tercetak, atau pesan "kosong" jika L kosong
+    // F.S. : seluruh data penyedia beserta penawaran mobilnya tercetak,
+    //        atau pesan "kosong" jika L kosong
     adrPenyedia P = L.first;
     if (P == NULL) {
         cout << "List Penyedia kosong." << endl;
     } else {
         while (P != NULL) {
+            cout << "========================================" << endl;
             cout << "ID Penyedia : " << P->info.id_penyedia << endl;
             cout << "Nama        : " << P->info.nama << endl;
             cout << "Alamat      : " << P->info.alamat << endl;
             cout << "Kontak      : " << P->info.kontak << endl;
-            cout << "----------------------------------------" << endl;
+            cout << "Daftar Penawaran Mobil:" << endl;
+            printAllRelasi(P->relasi);
             P = P->next;
         }
+        cout << "========================================" << endl;
     }
 }
