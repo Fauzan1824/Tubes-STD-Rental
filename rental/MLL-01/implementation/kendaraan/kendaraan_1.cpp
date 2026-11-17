@@ -1,11 +1,15 @@
 #include "../../header/kendaraan.h"
 
 void createListKendaraan(ListKendaraan &L) {
+    // I.S. : list L belum terdefinisi
+    // F.S. : list L kosong (first = NULL, last = NULL)
     L.first = NULL;
     L.last = NULL;
 }
 
 adrKendaraan allocateKendaraan(infotypeKendaraan x) {
+    // I.S. : x berisi data mobil
+    // F.S. : mengembalikan alamat elemen baru dengan info x, next = NULL, prev = NULL
     adrKendaraan P = new elmKendaraan;
     P->info = x;
     P->next = NULL;
@@ -14,6 +18,8 @@ adrKendaraan allocateKendaraan(infotypeKendaraan x) {
 }
 
 void insertFirstKendaraan(ListKendaraan &L, adrKendaraan P) {
+    // I.S. : list L mungkin kosong, P sudah dialokasikan
+    // F.S. : P menjadi elemen pertama list L
     if (L.first == NULL) {
         L.first = P;
         L.last = P;
@@ -25,6 +31,8 @@ void insertFirstKendaraan(ListKendaraan &L, adrKendaraan P) {
 }
 
 void insertLastKendaraan(ListKendaraan &L, adrKendaraan P) {
+    // I.S. : list L mungkin kosong, P sudah dialokasikan
+    // F.S. : P menjadi elemen terakhir list L
     if (L.first == NULL) {
         L.first = P;
         L.last = P;
@@ -36,6 +44,8 @@ void insertLastKendaraan(ListKendaraan &L, adrKendaraan P) {
 }
 
 void insertAfterKendaraan(ListKendaraan &L, adrKendaraan Prec, adrKendaraan P) {
+    // I.S. : Prec adalah elemen di dalam list L (atau NULL), P sudah dialokasikan
+    // F.S. : P berada tepat setelah Prec. Jika Prec = NULL, list tidak berubah
     if (Prec != NULL) {
         if (Prec == L.last) {
             insertLastKendaraan(L, P);
@@ -49,6 +59,9 @@ void insertAfterKendaraan(ListKendaraan &L, adrKendaraan Prec, adrKendaraan P) {
 }
 
 void deleteFirstKendaraan(ListKendaraan &L, adrKendaraan &P) {
+    // I.S. : list L mungkin kosong
+    // F.S. : jika L tidak kosong, elemen pertama dilepas dan alamatnya disimpan di P.
+    //        jika L kosong, P = NULL
     if (L.first == NULL) {
         P = NULL;
     } else if (L.first == L.last) {
@@ -64,6 +77,9 @@ void deleteFirstKendaraan(ListKendaraan &L, adrKendaraan &P) {
 }
 
 void deleteLastKendaraan(ListKendaraan &L, adrKendaraan &P) {
+    // I.S. : list L mungkin kosong
+    // F.S. : jika L tidak kosong, elemen terakhir dilepas dan alamatnya disimpan di P.
+    //        jika L kosong, P = NULL
     if (L.first == NULL) {
         P = NULL;
     } else if (L.first == L.last) {
@@ -79,6 +95,9 @@ void deleteLastKendaraan(ListKendaraan &L, adrKendaraan &P) {
 }
 
 void deleteAfterKendaraan(ListKendaraan &L, adrKendaraan Prec, adrKendaraan &P) {
+    // I.S. : Prec adalah elemen di dalam list L (atau NULL)
+    // F.S. : jika Prec dan elemen setelahnya ada, elemen setelah Prec dilepas dan
+    //        alamatnya disimpan di P. Jika tidak, P = NULL
     if (Prec == NULL || Prec->next == NULL) {
         P = NULL;
     } else if (Prec->next == L.last) {
@@ -93,29 +112,35 @@ void deleteAfterKendaraan(ListKendaraan &L, adrKendaraan Prec, adrKendaraan &P) 
 }
 
 adrKendaraan findKendaraan(ListKendaraan L, string id_mobil) {
+    // I.S. : list L mungkin kosong
+    // F.S. : mengembalikan alamat elemen yang id_mobil-nya sama, atau NULL jika tidak ada
+    adrKendaraan hasil = NULL;
     adrKendaraan P = L.first;
-    while (P != NULL) {
+    while (P != NULL && hasil == NULL) {
         if (P->info.id_mobil == id_mobil) {
-            return P;
+            hasil = P;
+        } else {
+            P = P->next;
         }
-        P = P->next;
     }
-    return NULL;
+    return hasil;
 }
 
 void printAllKendaraan(ListKendaraan L) {
+    // I.S. : list L mungkin kosong
+    // F.S. : seluruh data mobil di L tercetak, atau pesan "kosong" jika L kosong
     adrKendaraan P = L.first;
     if (P == NULL) {
         cout << "List Kendaraan kosong." << endl;
-        return;
-    }
-    while (P != NULL) {
-        cout << "ID Mobil   : " << P->info.id_mobil << endl;
-        cout << "Merek      : " << P->info.merek << endl;
-        cout << "Model      : " << P->info.model << endl;
-        cout << "Kapasitas  : " << P->info.kapasitas_penumpang << " orang" << endl;
-        cout << "Transmisi  : " << P->info.jenis_transmisi << endl;
-        cout << "----------------------------------------" << endl;
-        P = P->next;
+    } else {
+        while (P != NULL) {
+            cout << "ID Mobil   : " << P->info.id_mobil << endl;
+            cout << "Merek      : " << P->info.merek << endl;
+            cout << "Model      : " << P->info.model << endl;
+            cout << "Kapasitas  : " << P->info.kapasitas_penumpang << " orang" << endl;
+            cout << "Transmisi  : " << P->info.jenis_transmisi << endl;
+            cout << "----------------------------------------" << endl;
+            P = P->next;
+        }
     }
 }
