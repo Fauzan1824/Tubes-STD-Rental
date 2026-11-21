@@ -1,7 +1,7 @@
 #ifndef TRANSAKSI_H
 #define TRANSAKSI_H
 
-#include "kendaraan.h"
+#include "kendaraan_103012400120.h"
 
 struct infotypeRelasi {
     int harga_sewa_per_hari;

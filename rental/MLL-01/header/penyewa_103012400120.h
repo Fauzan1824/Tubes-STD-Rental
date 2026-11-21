@@ -1,7 +1,7 @@
 #ifndef PENYEWA_H
 #define PENYEWA_H
 
-#include "transaksi.h"
+#include "transaksi_103012400120.h"
 
 struct infotypePenyedia {
     string id_penyedia;

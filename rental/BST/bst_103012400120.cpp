@@ -1,4 +1,4 @@
-#include "bst.h"
+#include "bst_103012400120.h"
 
 void createBST(BST &T) {
     // I.S. : tree T belum terdefinisi
